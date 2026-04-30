@@ -76,6 +76,10 @@ jobs:
 
           # Wipe and recreate dist dirs to clear any root-owned files from previous deploys
           ssh "$DEPLOY_USER@$DEPLOY_HOST" "
+            # Ensure the main app directory exists and has proper ownership
+            sudo mkdir -p $APP_DIR && sudo chown \$(whoami):\$(whoami) $APP_DIR
+            
+            # Create and set ownership for subdirectories
             sudo rm -rf $APP_DIR/frontend/dist && sudo mkdir -p $APP_DIR/frontend/dist && sudo chown \$(whoami):\$(whoami) $APP_DIR/frontend/dist
             sudo rm -rf $APP_DIR/backend/dist  && sudo mkdir -p $APP_DIR/backend/dist  && sudo chown \$(whoami):\$(whoami) $APP_DIR/backend/dist
             sudo mkdir -p $APP_DIR/backend/node_modules && sudo chown \$(whoami):\$(whoami) $APP_DIR/backend/node_modules
