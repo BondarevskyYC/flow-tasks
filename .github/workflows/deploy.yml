@@ -84,6 +84,10 @@ jobs:
             sudo rm -rf $APP_DIR/backend/dist  && sudo mkdir -p $APP_DIR/backend/dist  && sudo chown \$(whoami):\$(whoami) $APP_DIR/backend/dist
             sudo mkdir -p $APP_DIR/backend/node_modules && sudo chown \$(whoami):\$(whoami) $APP_DIR/backend/node_modules
             sudo mkdir -p $APP_DIR/backend/src/prisma && sudo chown \$(whoami):\$(whoami) $APP_DIR/backend/src/prisma
+            
+            # Create .env file with proper permissions if it doesn't exist
+            sudo touch $APP_DIR/backend/.env && sudo chown \$(whoami):\$(whoami) $APP_DIR/backend/.env
+
           "
 
           # Sync built backend
