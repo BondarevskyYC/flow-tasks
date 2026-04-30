@@ -78,6 +78,7 @@ jobs:
           ssh "$DEPLOY_USER@$DEPLOY_HOST" "
             sudo rm -rf $APP_DIR/frontend/dist && sudo mkdir -p $APP_DIR/frontend/dist && sudo chown \$(whoami):\$(whoami) $APP_DIR/frontend/dist
             sudo rm -rf $APP_DIR/backend/dist  && sudo mkdir -p $APP_DIR/backend/dist  && sudo chown \$(whoami):\$(whoami) $APP_DIR/backend/dist
+            sudo mkdir -p $APP_DIR/backend/node_modules && sudo chown \$(whoami):\$(whoami) $APP_DIR/backend/node_modules
             sudo mkdir -p $APP_DIR/backend/src/prisma
           "
 
