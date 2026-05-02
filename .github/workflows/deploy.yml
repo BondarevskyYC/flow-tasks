@@ -134,7 +134,7 @@ jobs:
 
             echo '→ Updating .env with GitHub secrets...'
             touch \$APP_DIR/backend/.env
-            sed -i '/^GITHUB_ISSUES_TOKEN=/d' \$APP_DIR/backend/.env
+            sudo sed -i '/^GITHUB_ISSUES_TOKEN=/d' \$APP_DIR/backend/.env
             printf 'GITHUB_ISSUES_TOKEN=%s\n' "$GITHUB_ISSUES_TOKEN" >> \$APP_DIR/backend/.env
 
             echo '→ Running migrations...'
